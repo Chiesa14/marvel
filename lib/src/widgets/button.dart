@@ -24,7 +24,7 @@ class Button extends StatelessWidget {
           backgroundColor:
               backgroundColor ? const Color(0xFFED1B24) : Colors.black,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          minimumSize:  Size(double.infinity,height),
+          minimumSize: Size(double.infinity, height),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero, // Set to 0 to remove rounding
           ),

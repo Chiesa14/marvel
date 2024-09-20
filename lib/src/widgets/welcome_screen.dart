@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:marvel/src/widgets/welcome_page_dots.dart';
-import '../widgets/Button.dart';
+import 'button.dart';
 import '../utils/constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -39,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
                     SvgPicture.asset(
                       AppAssets.lgLogo,
                     ),
-                    const SizedBox(height: 60),
+                    const SizedBox(height: 70),
                     const ScreenDots(),
                     const SizedBox(height: 40),
                     Text(
