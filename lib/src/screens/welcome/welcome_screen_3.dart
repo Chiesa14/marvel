@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:marvel/src/screens/welcome/welcome_screen_2.dart';
+import 'package:marvel/src/screens/welcome/welcome_screen_4.dart';
 import '../../utils/constants.dart';
 import '../../widgets/welcome_screen.dart';
 
-class WelcomeScreen1 extends StatelessWidget {
-  const WelcomeScreen1({super.key});
+class WelcomeScreen3 extends StatelessWidget {
+  const WelcomeScreen3({super.key});
 
   void handleNextNavigation(BuildContext context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const WelcomeScreen2()),
+      MaterialPageRoute(builder: (context) => const WelcomeScreen4()),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return WelcomeScreen(
-      text: 'All your favourite MARVEL Movies & Series at one place',
-      bgImage: AppAssets.bg1,
-      indexValue: 1,
+      text:
+          'Create profiles for diffrent members & get personalised recommendations',
+      bgImage: AppAssets.bg3,
+      indexValue: 3,
       handleNextScreen: () => handleNextNavigation(context),
     );
   }

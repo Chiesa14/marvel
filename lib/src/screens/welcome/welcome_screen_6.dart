@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marvel/src/utils/constants.dart';
+import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/welcome_page_dots.dart';
-import 'button.dart';
-import '../utils/constants.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  final String text;
-  final String bgImage;
-  final double indexValue;
-  final VoidCallback handleNextScreen;
-
-  const WelcomeScreen({
+class WelcomeScreen6 extends StatelessWidget {
+  const WelcomeScreen6({
     super.key,
-    required this.text,
-    required this.bgImage,
-    required this.indexValue,
-    required this.handleNextScreen,
   });
 
   @override
@@ -29,9 +20,9 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             Container(
               height: screenHeight * 0.75,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(bgImage), // Background image
+                  image: AssetImage(AppAssets.bg6),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -44,18 +35,19 @@ class WelcomeScreen extends StatelessWidget {
                       AppAssets.lgLogo,
                     ),
                     const SizedBox(height: 70),
-                    ScreenDots(
-                      indexValue: indexValue,
+                    const ScreenDots(
+                      indexValue: 6,
                     ),
                     const SizedBox(height: 40),
-                    Text(
-                      text, // Custom text
-                      style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                    Button(
+                      title: "Signup",
+                      onPressed: () => {},
+                      backgroundColor: true,
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 255, 255, 255),
                       ),
-                      textAlign: TextAlign.center,
+                      height: 30,
                     ),
                   ],
                 ),
@@ -69,9 +61,9 @@ class WelcomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Button(
-                      title: "Continue",
-                      onPressed: handleNextScreen,
-                      backgroundColor: true, // Red button
+                      title: "login",
+                      onPressed: () => {},
+                      backgroundColor: false,
                       textStyle: const TextStyle(
                         fontSize: 20,
                         color: Color.fromARGB(255, 255, 255, 255),

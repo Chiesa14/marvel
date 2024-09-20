@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ScreenDots extends StatelessWidget {
-  const ScreenDots({super.key});
+  final double indexValue;
+  const ScreenDots({super.key, required this.indexValue});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,9 @@ class ScreenDots extends StatelessWidget {
           height: 10,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: index == 0 ? const Color(0xFFED1B24) : Colors.white,
+            color: index == indexValue - 1
+                ? const Color(0xFFED1B24)
+                : Colors.white,
           ),
           margin: const EdgeInsets.all(6),
         );
