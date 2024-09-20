@@ -21,6 +21,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Container(
@@ -47,16 +48,20 @@ class WelcomeScreen extends StatelessWidget {
                     ScreenDots(
                       indexValue: indexValue,
                     ),
-                    const SizedBox(height: 40),
-                    Text(
-                      text, // Custom text
-                      style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 90,
+                      width: screenWidth * 0.6,
+                      child: Text(
+                        text, // Custom text
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                    )
                   ],
                 ),
               ),
