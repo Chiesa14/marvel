@@ -77,7 +77,7 @@ class WelcomeScreen6 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Button(
-                      title: "login",
+                      title: "Login",
                       onPressed: () => handleLoginNavigation(context),
                       backgroundColor: false,
                       textStyle: const TextStyle(

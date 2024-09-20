@@ -53,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                       height: 90,
                       width: screenWidth * 0.6,
                       child: Text(
-                        text, // Custom text
+                        text,
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
