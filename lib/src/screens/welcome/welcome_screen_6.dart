@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marvel/src/screens/auth/login/login_page.dart';
+import 'package:marvel/src/screens/auth/signup/signup_page.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/welcome_page_dots.dart';
@@ -8,6 +10,20 @@ class WelcomeScreen6 extends StatelessWidget {
   const WelcomeScreen6({
     super.key,
   });
+
+  void handleLoginNavigation(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LogIn()),
+    );
+  }
+
+  void handleRegisterNavigation(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const SignUp()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +57,7 @@ class WelcomeScreen6 extends StatelessWidget {
                     const SizedBox(height: 40),
                     Button(
                       title: "Signup",
-                      onPressed: () => {},
+                      onPressed: () => handleRegisterNavigation(context),
                       backgroundColor: true,
                       textStyle: const TextStyle(
                         fontSize: 20,
@@ -62,7 +78,7 @@ class WelcomeScreen6 extends StatelessWidget {
                   children: [
                     Button(
                       title: "login",
-                      onPressed: () => {},
+                      onPressed: () => handleLoginNavigation(context),
                       backgroundColor: false,
                       textStyle: const TextStyle(
                         fontSize: 20,
