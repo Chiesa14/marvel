@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/auth/login/login_page.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/input_password.dart';
@@ -50,7 +51,9 @@ class _SignUpState extends State<SignUp> {
                   onPressed: () => {},
                   backgroundColor: false,
                   textStyle: const TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                   height: 50),
               const SizedBox(height: 5),
               Row(
@@ -102,6 +105,12 @@ class _SignUpState extends State<SignUp> {
                   ),
                   const SizedBox(width: 2),
                   GestureDetector(
+                    onTap: () => {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LogIn()),
+                      )
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(
