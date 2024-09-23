@@ -28,7 +28,7 @@ class Button extends StatelessWidget {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero, // Set to 0 to remove rounding
           ),
-          side: const BorderSide(color: Color(0xFFED1B24), width: 7)),
+          side: const BorderSide(color: Color(0xFFED1B24), width: 4)),
       child: Text(
         title,
         style: textStyle,

@@ -1,10 +1,10 @@
 name: marvel
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.4 <4.0.0'
+  sdk: ">=3.3.4 <4.0.0"
 
 dependencies:
   flutter:
@@ -18,11 +18,14 @@ dev_dependencies:
 
 flutter:
   assets:
-    - 'assets/icons/marvel_logo.svg'
-    - 'assets/images/bg_1.png'
-    - 'assets/images/bg_2.png'
-    - 'assets/images/bg_3.png'
-    - 'assets/images/bg_4.png'
-    - 'assets/images/bg_5.png'
-    - 'assets/images/bg_6.png'
+    - "assets/icons/marvel_logo.svg"
+    - "assets/icons/facebook.svg"
+    - "assets/icons/google.svg"
+    - "assets/images/bg_1.png"
+    - "assets/images/bg_2.png"
+    - "assets/images/bg_3.png"
+    - "assets/images/bg_4.png"
+    - "assets/images/bg_5.png"
+    - "assets/images/bg_6.png"
+
   uses-material-design: true

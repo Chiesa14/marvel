@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/utils/constants.dart';
+import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/input_password.dart';
 import 'package:marvel/src/widgets/inputs.dart';
+import 'package:marvel/src/widgets/site_button.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -42,6 +44,15 @@ class _SignUpState extends State<SignUp> {
                 controller: _passwordController,
                 placeholder: 'Password',
               ),
+              const SizedBox(height: 20),
+              Button(
+                  title: 'Signup',
+                  onPressed: () => {},
+                  backgroundColor: false,
+                  textStyle: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                  height: 50),
+              const SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -57,7 +68,10 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(height: 20),
               const Text(
                 "or",
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                style: TextStyle(
+                    color: Colors.white54,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20),
               ),
               const SizedBox(height: 10),
               const Text(
@@ -66,6 +80,36 @@ class _SignUpState extends State<SignUp> {
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: 20),
+              ),
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SiteButton(title: "Facebook", logoURL: AppAssets.facebook),
+                  SiteButton(title: "Google", logoURL: AppAssets.google)
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Already have another account?",
+                    style: TextStyle(
+                      color: Colors.white54,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(width: 2),
+                  GestureDetector(
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(
+                          color: Color(0xFFED1B24),
+                          fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
