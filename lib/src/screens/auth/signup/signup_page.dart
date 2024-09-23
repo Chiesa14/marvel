@@ -17,110 +17,116 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        height: screenHeight,
-        width: screenWidth,
-        decoration: const BoxDecoration(color: Colors.black),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              const SizedBox(height: 120),
-              SvgPicture.asset(
-                AppAssets.lgLogo,
-              ),
-              const SizedBox(height: 50),
-              Input(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                placeholder: 'Enter your email ID',
-              ),
-              const SizedBox(height: 10),
-              InputPassword(
-                controller: _passwordController,
-                placeholder: 'Password',
-              ),
-              const SizedBox(height: 20),
-              Button(
+      body: SingleChildScrollView(
+        child: Container(
+          height: screenHeight,
+          decoration: const BoxDecoration(color: Colors.black),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                const SizedBox(height: 120),
+                SvgPicture.asset(
+                  AppAssets.lgLogo,
+                ),
+                const SizedBox(height: 50),
+                Input(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  placeholder: 'Enter your email ID',
+                ),
+                const SizedBox(height: 10),
+                InputPassword(
+                  controller: _passwordController,
+                  placeholder: 'Password',
+                ),
+                const SizedBox(height: 20),
+                Button(
                   title: 'Signup',
                   onPressed: () => {},
-                  backgroundColor: false,
+                  backgroundColor: _emailController.text.isNotEmpty &&
+                          _passwordController.text.isNotEmpty
+                      ? true
+                      : false,
                   textStyle: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
-                  height: 50),
-              const SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    child: const Text(
-                      "Forgor Passord?",
-                      style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.bold),
+                  height: 50,
+                ),
+                const SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      child: const Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                            color: Colors.white54, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                "or",
-                style: TextStyle(
-                    color: Colors.white54,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "Continue With",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20),
-              ),
-              const SizedBox(height: 20),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SiteButton(title: "Facebook", logoURL: AppAssets.facebook),
-                  SiteButton(title: "Google", logoURL: AppAssets.google)
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Already have another account?",
-                    style: TextStyle(
+                  ],
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  "or",
+                  style: TextStyle(
                       color: Colors.white54,
                       fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  const SizedBox(width: 2),
-                  GestureDetector(
-                    onTap: () => {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LogIn()),
-                      )
-                    },
-                    child: const Text(
-                      "Login",
+                      fontSize: 20),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Continue With",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20),
+                ),
+                const SizedBox(height: 20),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SiteButton(title: "Facebook", logoURL: AppAssets.facebook),
+                    SiteButton(title: "Google", logoURL: AppAssets.google)
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Don't have an account?",
                       style: TextStyle(
-                          color: Color(0xFFED1B24),
-                          fontWeight: FontWeight.w800),
+                        color: Colors.white54,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    const SizedBox(width: 2),
+                    GestureDetector(
+                      onTap: () => {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LogIn()),
+                        )
+                      },
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Color(0xFFED1B24),
+                            fontWeight: FontWeight.w800),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
