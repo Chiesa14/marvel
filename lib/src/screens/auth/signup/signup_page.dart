@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/screens/auth/login/login_page.dart';
+import 'package:marvel/src/screens/plans/plans_page_1.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/input_password.dart';
@@ -17,6 +18,13 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void handleSignup(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const PlanPage1()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +56,10 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(height: 20),
                 Button(
                   title: 'Signup',
-                  onPressed: () => {},
+                  onPressed: () => _emailController.text.isNotEmpty &&
+                          _passwordController.text.isNotEmpty
+                      ? handleSignup(context)
+                      : null,
                   backgroundColor: _emailController.text.isNotEmpty &&
                           _passwordController.text.isNotEmpty
                       ? true
