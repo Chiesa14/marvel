@@ -6,17 +6,14 @@ class NumberLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return SizedBox(
-      // width: screenWidth * 0.8,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(3, (index) {
           int value = index + 1;
           return Row(
             children: [
-              const SizedBox(height: 60),
+              const SizedBox(height: 50),
               if (index > 0)
                 Container(
                   height: 6,
