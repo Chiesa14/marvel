@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
@@ -15,6 +13,7 @@ class PlanPage1 extends StatefulWidget {
 }
 
 class _PlanPage1State extends State<PlanPage1> {
+  int selectedPlan = 0;
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -60,8 +59,12 @@ class _PlanPage1State extends State<PlanPage1> {
                   children: [
                     PaymentButton(
                       title: "Movies & Series",
-                      onPressed: () => {},
-                      backgroundColor: false,
+                      onPressed: () {
+                        setState(() {
+                          selectedPlan = 1;
+                        });
+                      },
+                      backgroundColor: selectedPlan == 1 ? true : false,
                       textStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -72,8 +75,12 @@ class _PlanPage1State extends State<PlanPage1> {
                     const SizedBox(height: 10),
                     PaymentButton(
                       title: "Movies",
-                      onPressed: () => {},
-                      backgroundColor: false,
+                      onPressed: () {
+                        setState(() {
+                          selectedPlan = 2;
+                        });
+                      },
+                      backgroundColor: selectedPlan == 2 ? true : false,
                       textStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -84,8 +91,12 @@ class _PlanPage1State extends State<PlanPage1> {
                     const SizedBox(height: 10),
                     PaymentButton(
                       title: "Series",
-                      onPressed: () => {},
-                      backgroundColor: false,
+                      onPressed: () {
+                        setState(() {
+                          selectedPlan = 3;
+                        });
+                      },
+                      backgroundColor: selectedPlan == 3 ? true : false,
                       textStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 26,
@@ -93,7 +104,7 @@ class _PlanPage1State extends State<PlanPage1> {
                       height: 100,
                       subtext: '\$15/mth',
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 40),
                     Button(
                         title: "Continue",
                         onPressed: () => {},
