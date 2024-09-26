@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/plans/plans_page_2.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/payment_button.dart';
@@ -14,6 +15,14 @@ class PlanPage1 extends StatefulWidget {
 
 class _PlanPage1State extends State<PlanPage1> {
   int selectedPlan = 0;
+
+  void handleContinue(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const PlanPage2()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -107,7 +116,9 @@ class _PlanPage1State extends State<PlanPage1> {
                     const SizedBox(height: 40),
                     Button(
                         title: "Continue",
-                        onPressed: () => {},
+                        onPressed: selectedPlan == 0
+                            ? () => {}
+                            : () => handleContinue(context),
                         backgroundColor: false,
                         textStyle:
                             const TextStyle(color: Colors.white, fontSize: 20),
