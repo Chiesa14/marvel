@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/screens/auth/login/login_page.dart';
-import 'package:marvel/src/screens/plans/plans_page_1.dart';
+import 'package:marvel/src/screens/plans/plans_page.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/input_password.dart';
