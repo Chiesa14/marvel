@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/payment/payment_page_3.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/inputs.dart';
@@ -22,7 +23,7 @@ class _PaymentPage2State extends State<PaymentPage2> {
   void handleContinue(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const PaymentPage2()),
+      MaterialPageRoute(builder: (context) => const PaymentPage3()),
     );
   }
 
@@ -130,8 +131,8 @@ class _PaymentPage2State extends State<PaymentPage2> {
                   onPressed: _cardNumberController.text.isNotEmpty &&
                           _cvvController.text.isNotEmpty &&
                           _expDateController.text.isNotEmpty
-                      ? () => {}
-                      : () => handleContinue(context),
+                      ? () => handleContinue(context)
+                      : () => {},
                   backgroundColor: _cardNumberController.text.isNotEmpty &&
                           _cvvController.text.isNotEmpty &&
                           _expDateController.text.isNotEmpty

@@ -44,7 +44,7 @@ class _PaymentPage1State extends State<PaymentPage1> {
                   height: 1,
                   color: Colors.white24,
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 20),
                 SvgPicture.asset(
                   AppAssets.lgLogo,
                 ),
