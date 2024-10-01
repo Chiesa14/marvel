@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
-import 'package:marvel/src/widgets/inputs.dart';
+import 'package:marvel/src/widgets/otp_input.dart';
 import 'package:marvel/src/widgets/top_number_line_tab.dart';
 
 class PaymentPage3 extends StatefulWidget {
@@ -18,6 +18,11 @@ class _PaymentPage3State extends State<PaymentPage3> {
       context,
       MaterialPageRoute(builder: (context) => const PaymentPage3()),
     );
+  }
+
+  void _onOtpCompleted(String otp) {
+    print('OTP Entered: $otp');
+    // Handle OTP submission here
   }
 
   @override
@@ -54,13 +59,14 @@ class _PaymentPage3State extends State<PaymentPage3> {
                   const SizedBox(height: 20),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: const Column(
+                    child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'Please enter the OTP that we’ve sent on your phone number 55XXXXXX99 linked with your bank account.',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
+                        OTPInput(onCompleted: _onOtpCompleted)
                       ],
                     ),
                   ),
