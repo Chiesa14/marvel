@@ -82,7 +82,7 @@ class _PaymentPage3State extends State<PaymentPage3> {
                 child: Button(
                   title: "Continue",
                   onPressed: () => {},
-                  backgroundColor: false,
+                  backgroundColor: otpValue != "" ? true : false,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                   height: 50,
                 ),
