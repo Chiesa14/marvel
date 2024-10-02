@@ -83,6 +83,13 @@ class _PaymentPage3State extends State<PaymentPage3> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 50),
+                  GestureDetector(
+                    child: const Text(
+                      'Didn’t receve the OTP?',
+                      style: TextStyle(color: Color(0xFFED1B24), fontSize: 12),
+                    ),
+                  )
                 ],
               ),
               Padding(
