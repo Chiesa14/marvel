@@ -13,6 +13,8 @@ class PaymentPage3 extends StatefulWidget {
 }
 
 class _PaymentPage3State extends State<PaymentPage3> {
+  String otpValue = "";
+
   void handleContinue(BuildContext context) {
     Navigator.push(
       context,
@@ -21,7 +23,9 @@ class _PaymentPage3State extends State<PaymentPage3> {
   }
 
   void _onOtpCompleted(String otp) {
-    print('OTP Entered: $otp');
+    setState(() {
+      otpValue = otp;
+    });
     // Handle OTP submission here
   }
 

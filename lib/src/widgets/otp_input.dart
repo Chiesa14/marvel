@@ -11,6 +11,7 @@ class OTPInput extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 50,
       height: 60,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       textStyle: const TextStyle(
         fontSize: 20,
         color: Colors.white,
