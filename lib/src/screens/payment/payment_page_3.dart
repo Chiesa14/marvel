@@ -22,6 +22,12 @@ class _PaymentPage3State extends State<PaymentPage3> {
     );
   }
 
+  void _onOtpChanged(String otp) {
+    setState(() {
+      otpValue = otp;
+    });
+  }
+
   void _onOtpCompleted(String otp) {
     setState(() {
       otpValue = otp;
@@ -70,7 +76,10 @@ class _PaymentPage3State extends State<PaymentPage3> {
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                         const SizedBox(height: 20),
-                        OTPInput(onCompleted: _onOtpCompleted)
+                        OTPInput(
+                          onCompleted: _onOtpCompleted,
+                          onChanged: _onOtpChanged,
+                        )
                       ],
                     ),
                   ),
@@ -81,8 +90,10 @@ class _PaymentPage3State extends State<PaymentPage3> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Button(
                   title: "Continue",
-                  onPressed: () => {},
-                  backgroundColor: otpValue != "" ? true : false,
+                  onPressed: otpValue.length == 4
+                      ? () => handleContinue(context)
+                      : () => {},
+                  backgroundColor: otpValue.length == 4 ? true : false,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                   height: 50,
                 ),

@@ -3,8 +3,10 @@ import 'package:pinput/pinput.dart';
 
 class OTPInput extends StatelessWidget {
   final Function(String) onCompleted;
+  final Function(String) onChanged;
 
-  const OTPInput({super.key, required this.onCompleted});
+  const OTPInput(
+      {super.key, required this.onCompleted, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class OTPInput extends StatelessWidget {
     return Pinput(
       length: 4,
       defaultPinTheme: defaultPinTheme,
+      onChanged: onChanged,
       onCompleted: onCompleted,
       showCursor: true,
       cursor: Column(
