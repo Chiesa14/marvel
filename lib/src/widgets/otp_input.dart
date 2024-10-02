@@ -9,41 +9,31 @@ class OTPInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
+      width: 50,
+      height: 60,
       textStyle: const TextStyle(
         fontSize: 20,
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: FontWeight.w600,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.white30,
       ),
     );
 
     return Pinput(
-      length: 6,
+      length: 4,
       defaultPinTheme: defaultPinTheme,
-      focusedPinTheme: defaultPinTheme.copyWith(
-        decoration: defaultPinTheme.decoration!.copyWith(
-          border: Border.all(color: Colors.blue),
-        ),
-      ),
-      submittedPinTheme: defaultPinTheme.copyWith(
-        decoration: defaultPinTheme.decoration!.copyWith(
-          color: Colors.grey.shade300,
-        ),
-      ),
       onCompleted: onCompleted,
       showCursor: true,
       cursor: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             width: 2,
             height: 20,
-            color: Colors.blue,
+            color: Colors.white,
           ),
         ],
       ),
