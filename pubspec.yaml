@@ -23,5 +23,6 @@ flutter:
     - "assets/icons/"
     - "assets/images/"
     - "assets/animations/"
+    - "assets/avatars/"
 
   uses-material-design: true

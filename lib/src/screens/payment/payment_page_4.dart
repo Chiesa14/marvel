@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
+import 'package:marvel/src/screens/Profile/profile_page_1.dart';
 import 'package:marvel/src/screens/home/homeScreen.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/top_number_line_tab.dart';
@@ -51,7 +52,7 @@ class _PaymentPage4State extends State<PaymentPage4> {
   void handleContinue(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const Homescreen()),
+      MaterialPageRoute(builder: (context) => const ProfilePage1()),
     );
   }
 
@@ -135,7 +136,7 @@ class _PaymentPage4State extends State<PaymentPage4> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Button(
-                title: isVerified ? "Continue" : "Go Back",
+                title: isLoading || isVerified ? "Continue" : "Go Back",
                 onPressed: isVerified
                     ? () => handleContinue(context)
                     : () => Navigator.pop(context),
