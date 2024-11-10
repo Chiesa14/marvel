@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/payment/payment_page_4.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/otp_input.dart';
@@ -15,10 +16,13 @@ class PaymentPage3 extends StatefulWidget {
 class _PaymentPage3State extends State<PaymentPage3> {
   String otpValue = "";
 
-  void handleContinue(BuildContext context) {
+  void handleContinue(BuildContext context, String otpValue) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const PaymentPage3()),
+      MaterialPageRoute(
+          builder: (context) => PaymentPage4(
+                otpInput: otpValue,
+              )),
     );
   }
 
@@ -98,7 +102,7 @@ class _PaymentPage3State extends State<PaymentPage3> {
                 child: Button(
                   title: "Continue",
                   onPressed: otpValue.length == 4
-                      ? () => handleContinue(context)
+                      ? () => handleContinue(context, otpValue)
                       : () => {},
                   backgroundColor: otpValue.length == 4 ? true : false,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
