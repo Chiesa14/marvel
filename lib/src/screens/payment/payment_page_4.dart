@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:marvel/src/screens/Profile/profile_page_1.dart';
-import 'package:marvel/src/screens/home/homeScreen.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/top_number_line_tab.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/Profile/profile_page_2.dart';
 
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
@@ -15,6 +16,14 @@ class ProfilePage1 extends StatefulWidget {
 class _ProfilePage1State extends State<ProfilePage1> {
   bool isSelectedAvatar = false;
   String selectedAvatar = "";
+
+  void handleContinue(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProfilePage2()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -91,7 +100,7 @@ class _ProfilePage1State extends State<ProfilePage1> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Button(
                 title: "Looks Good",
-                onPressed: isSelectedAvatar ? () => {} : () => {},
+                onPressed: isSelectedAvatar ? () => handleContinue(context) : () => {},
                 backgroundColor: isSelectedAvatar,
                 textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                 height: 50,
