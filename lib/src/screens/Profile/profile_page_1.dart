@@ -78,8 +78,7 @@ class _ProfilePage1State extends State<ProfilePage1> {
                             });
                           },
                           child: Image.asset(
-                            avatar.value["1x"]!, // Access the "1x" path here
-                            fit: BoxFit.cover,
+                            avatar.value["1x"]!,
                           ),
                         ),
                       ),
