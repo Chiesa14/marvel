@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/Profile/profile_confirm.dart';
 import 'package:marvel/src/screens/Profile/profile_page_2.dart';
 import 'package:marvel/src/widgets/otp_input.dart';
 
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
-import '../../widgets/inputs.dart';
 import 'controllers.dart';
 
 class ProfilePage4 extends StatefulWidget {
@@ -33,7 +33,7 @@ class _ProfilePage4State extends State<ProfilePage4> {
   void handleContinue(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ProfilePage2()),
+      MaterialPageRoute(builder: (context) => const ProfileConfirm()),
     );
   }
 
