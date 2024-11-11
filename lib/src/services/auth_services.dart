@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:marvel/src/screens/auth/login/login_page.dart';
 import 'package:marvel/src/screens/plans/plans_page.dart';
 
@@ -64,11 +65,23 @@ class AuthServices {
     }
   }
 
-  Future<void> signUpWithGoogle()async{
+  Future<void> signInWithGoogle({
+    required BuildContext context,
+  }) async {
     try {
-      
+      final googleUser = await GoogleSignIn().signIn();
+      final googleAuth = await googleUser?.authentication;
+      final cred = GoogleAuthProvider.credential(
+          idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
+      await FirebaseAuth.instance.signInWithCredential(cred);
+
+      await Future.delayed(const Duration(seconds: 1));
+      await Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const PlanPage1()),
+      );
     } catch (e) {
-      
+      print(e.toString());
     }
   }
 

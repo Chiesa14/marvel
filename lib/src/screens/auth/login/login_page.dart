@@ -36,6 +36,10 @@ class _LogInState extends State<LogIn> {
             });
   }
 
+  void handleSigninWithGoogle(BuildContext context) async {
+    await AuthServices().signInWithGoogle(context: context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -66,7 +70,10 @@ class _LogInState extends State<LogIn> {
                 const SizedBox(height: 20),
                 Button(
                   title: isLoading == true ? 'Loading...' : 'Login',
-                  onPressed: () => handleSignin(context),
+                  onPressed: _emailController.text.isNotEmpty &&
+                          _passwordController.text.isNotEmpty
+                      ? () => handleSignin(context)
+                      : () => {},
                   backgroundColor: _emailController.text.isNotEmpty &&
                           _passwordController.text.isNotEmpty
                       ? true
@@ -115,6 +122,7 @@ class _LogInState extends State<LogIn> {
                           title: "Facebook", logoURL: AppAssets.facebook),
                     ),
                     GestureDetector(
+                      onTap: () => handleSigninWithGoogle(context),
                       child: const SiteButton(
                           title: "Google", logoURL: AppAssets.google),
                     )
