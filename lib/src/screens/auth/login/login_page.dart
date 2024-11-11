@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/screens/auth/signup/signup_page.dart';
+import 'package:marvel/src/services/auth_services.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
 import 'package:marvel/src/widgets/input_password.dart';
@@ -15,8 +16,25 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  bool isLoading = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void handleSignin(BuildContext context) async {
+    setState(() {
+      isLoading = true;
+    });
+    await AuthServices()
+        .signIn(
+            email: _emailController.text,
+            password: _passwordController.text,
+            context: context)
+        .then((value) => {
+              setState(() {
+                isLoading = false;
+              })
+            });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +65,8 @@ class _LogInState extends State<LogIn> {
                 ),
                 const SizedBox(height: 20),
                 Button(
-                  title: 'Login',
-                  onPressed: () => {},
+                  title: isLoading == true ? 'Loading...' : 'Login',
+                  onPressed: () => handleSignin(context),
                   backgroundColor: _emailController.text.isNotEmpty &&
                           _passwordController.text.isNotEmpty
                       ? true

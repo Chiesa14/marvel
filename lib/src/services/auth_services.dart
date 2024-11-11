@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:marvel/src/screens/auth/login/login_page.dart';
 import 'package:marvel/src/screens/plans/plans_page.dart';
 
 class AuthServices {
@@ -13,7 +14,6 @@ class AuthServices {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      await Future.delayed(const Duration(seconds: 1));
       await Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const PlanPage1()),
@@ -21,9 +21,9 @@ class AuthServices {
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == "weak-password") {
-        message = "The password provided is weak";
+        message = "The password provided is weak.";
       } else if (e.code == "email-already-in-use") {
-        message = "An account already exists with that email";
+        message = "An account already exists with that email.";
       }
       Fluttertoast.showToast(
         msg: message,
@@ -43,20 +43,16 @@ class AuthServices {
   }) async {
     try {
       await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+          .signInWithEmailAndPassword(email: email, password: password);
 
-      await Future.delayed(const Duration(seconds: 1));
       await Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const PlanPage1()),
       );
     } on FirebaseAuthException catch (e) {
-      String message = '';
-      if (e.code == "weak-password") {
-        message = "The password provided is weak";
-      } else if (e.code == "email-already-in-use") {
-        message = "An account already exists with that email";
-      }
+      print('Error is from $e');
+      String message = 'Invalid email or password.';
+
       Fluttertoast.showToast(
         msg: message,
         toastLength: Toast.LENGTH_LONG,
@@ -66,5 +62,22 @@ class AuthServices {
         fontSize: 14,
       );
     }
+  }
+
+  Future<void> signUpWithGoogle()async{
+    try {
+      
+    } catch (e) {
+      
+    }
+  }
+
+  Future<void> singnOut({required BuildContext context}) async {
+    await FirebaseAuth.instance.signOut();
+    await Future.delayed(const Duration(seconds: 1));
+    await Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LogIn()),
+    );
   }
 }
