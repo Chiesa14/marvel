@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:marvel/src/widgets/profile_animated_component.dart';
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
 import 'controllers.dart';
@@ -75,34 +76,11 @@ class _ProfileConfirmState extends State<ProfileConfirm> {
               if (selectedAvatar != null && selectedAvatar["1x"] != null)
                 Column(
                   children: [
-                    Container(
-                      height: 300,
-                      width: 300,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          AnimatedSwitcher(
-                            duration: const Duration(seconds: 2),
-                            transitionBuilder:
-                                (Widget child, Animation<double> animation) {
-                              return FadeTransition(
-                                  opacity: animation, child: child);
-                            },
-                            child: SvgPicture.asset(
-                              isReversed
-                                  ? 'assets/icons/round_red_rev.svg'
-                                  : 'assets/icons/round_red.svg',
-                              fit: BoxFit.cover,
-                              key: ValueKey<bool>(isReversed),
-                            ),
-                          ),
-                          Image.asset(
-                            selectedAvatar["3x"]!,
-                            fit: BoxFit.contain,
-                          ),
-                        ],
-                      ),
-                    ),
+                    ProfileAnimatedComponent(
+                        height: 300,
+                        width: 300,
+                        image: selectedAvatar['3x']!,
+                        isReversed: isReversed),
                     const SizedBox(height: 20),
                     const Text(
                       "UIUXDIVYANSHU",
