@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marvel/src/screens/Profile/profile_page_4.dart';
 
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
@@ -17,6 +18,13 @@ class _ProfilePage3State extends State<ProfilePage3> {
   final TextEditingController _passwordController = TextEditingController();
   bool isPasswordValid = false;
   bool isPasswordContainSpecialCharacters = false;
+
+  void handleContinue(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProfilePage4()),
+    );
+  }
 
   @override
   void initState() {
@@ -77,7 +85,7 @@ class _ProfilePage3State extends State<ProfilePage3> {
                         fontWeight: FontWeight.w900,
                         fontSize: 30),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   if (selectedAvatar != null && selectedAvatar["1x"] != null)
                     SizedBox(
                       width: 300,
@@ -181,7 +189,7 @@ class _ProfilePage3State extends State<ProfilePage3> {
                   onPressed: _passwordController.text.length >= 8 &&
                           isPasswordValid &&
                           isPasswordContainSpecialCharacters
-                      ? () => {}
+                      ? () => handleContinue(context)
                       : () => {},
                   backgroundColor: _passwordController.text.length >= 8 &&
                       isPasswordValid &&

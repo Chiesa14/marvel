@@ -36,7 +36,6 @@ class _PaymentPage3State extends State<PaymentPage3> {
     setState(() {
       otpValue = otp;
     });
-    // Handle OTP submission here
   }
 
   @override

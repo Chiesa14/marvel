@@ -122,6 +122,7 @@ class _ProfilePage2State extends State<ProfilePage2> {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 20),
                           if (_userNameController.text.isNotEmpty)
                             Align(
                               alignment: Alignment.centerLeft,
@@ -143,7 +144,8 @@ class _ProfilePage2State extends State<ProfilePage2> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Button(
                   title: "Call me this",
                   onPressed: _userNameController.text.isNotEmpty && isAvailable
