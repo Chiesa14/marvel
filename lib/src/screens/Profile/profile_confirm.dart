@@ -82,7 +82,7 @@ class _ProfileConfirmState extends State<ProfileConfirm> {
                         alignment: Alignment.center,
                         children: [
                           AnimatedSwitcher(
-                            duration: const Duration(seconds: 3),
+                            duration: const Duration(seconds: 4),
                             transitionBuilder:
                                 (Widget child, Animation<double> animation) {
                               return FadeTransition(
