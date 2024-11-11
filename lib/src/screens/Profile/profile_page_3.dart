@@ -14,28 +14,35 @@ class ProfilePage3 extends StatefulWidget {
 }
 
 class _ProfilePage3State extends State<ProfilePage3> {
-  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool isPasswordValid = false;
+  bool isPasswordContainSpecialCharacters = false;
 
   @override
   void initState() {
     super.initState();
-    _userNameController.addListener(_checkPasswordStrength);
+    _passwordController.addListener(_checkPasswordStrength);
   }
 
   @override
   void dispose() {
-    _userNameController.removeListener(_checkPasswordStrength);
-    _userNameController.dispose();
+    _passwordController.removeListener(_checkPasswordStrength);
+    _passwordController.dispose();
     super.dispose();
   }
 
   void _checkPasswordStrength() {
-    final password = _userNameController.text;
-    final passwordRegex = RegExp(r'^(?=.*[.,_\-/&])[A-Za-z0-9.,_\-/&]{8,}$');
+    final password = _passwordController.text;
+    final passwordRegex =
+        RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z0-9._\-\/!&@]*$');
+
+    final passwordRegexSpecialCharaters =
+        RegExp(r'^(?=.*[._\-/&@])[A-Za-z0-9.!_\-/&@]+$');
 
     setState(() {
       isPasswordValid = passwordRegex.hasMatch(password);
+      isPasswordContainSpecialCharacters =
+          passwordRegexSpecialCharaters.hasMatch(password);
     });
   }
 
@@ -94,9 +101,20 @@ class _ProfilePage3State extends State<ProfilePage3> {
                               ),
                             ],
                           ),
+                          const SizedBox(height: 10),
+                          // UIUXDIVYANSHU
+                          const Text(
+                            "UIUXDIVYANSHU",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 20),
+                          ),
                           const SizedBox(height: 20),
+
                           Input(
-                            controller: _userNameController,
+                            controller: _passwordController,
                             placeholder: 'Create a password',
                             keyboardType: TextInputType.text,
                             cursorColor: Colors.white,
@@ -123,7 +141,7 @@ class _ProfilePage3State extends State<ProfilePage3> {
                                 Text(
                                   "Minimum 8 characters",
                                   style: TextStyle(
-                                    color: _userNameController.text.length >= 8
+                                    color: _passwordController.text.length >= 8
                                         ? const Color(0xFF0E9B02)
                                         : Colors.white.withOpacity(0.3),
                                     fontWeight: FontWeight.bold,
@@ -132,16 +150,16 @@ class _ProfilePage3State extends State<ProfilePage3> {
                                 Text(
                                   "Only A-Z, a-z, 0-9",
                                   style: TextStyle(
-                                    color: _userNameController.text.length >= 8
+                                    color: isPasswordValid
                                         ? const Color(0xFF0E9B02)
                                         : Colors.white.withOpacity(0.3),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
-                                  "1 special charcter (. , _ - / &)",
+                                  "1 special charcter (. ! _ - / & @)",
                                   style: TextStyle(
-                                    color: _userNameController.text.length >= 8
+                                    color: isPasswordContainSpecialCharacters
                                         ? const Color(0xFF0E9B02)
                                         : Colors.white.withOpacity(0.3),
                                     fontWeight: FontWeight.bold,
@@ -160,12 +178,14 @@ class _ProfilePage3State extends State<ProfilePage3> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Button(
                   title: "Looks Strong",
-                  onPressed:
-                      _userNameController.text.isNotEmpty && isPasswordValid
-                          ? () => {}
-                          : () => {},
-                  backgroundColor:
-                      _userNameController.text.isNotEmpty && isPasswordValid,
+                  onPressed: _passwordController.text.length >= 8 &&
+                          isPasswordValid &&
+                          isPasswordContainSpecialCharacters
+                      ? () => {}
+                      : () => {},
+                  backgroundColor: _passwordController.text.length >= 8 &&
+                      isPasswordValid &&
+                      isPasswordContainSpecialCharacters,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                   height: 50,
                 ),
