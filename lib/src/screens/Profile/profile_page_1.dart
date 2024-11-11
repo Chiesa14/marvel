@@ -18,6 +18,9 @@ class _ProfilePage1State extends State<ProfilePage1> {
   String selectedAvatar = "";
 
   void handleContinue(BuildContext context) {
+    setState(() {
+      userAvatar = selectedAvatar;
+    });
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const ProfilePage2()),
@@ -72,9 +75,6 @@ class _ProfilePage1State extends State<ProfilePage1> {
                               ? [
                                   const BoxShadow(
                                     color: Colors.white,
-                                    offset: Offset(4, 4),
-                                    blurRadius: 8,
-                                    spreadRadius: 2,
                                   ),
                                 ]
                               : null,
@@ -100,7 +100,8 @@ class _ProfilePage1State extends State<ProfilePage1> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Button(
                 title: "Looks Good",
-                onPressed: isSelectedAvatar ? () => handleContinue(context) : () => {},
+                onPressed:
+                    isSelectedAvatar ? () => handleContinue(context) : () => {},
                 backgroundColor: isSelectedAvatar,
                 textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                 height: 50,

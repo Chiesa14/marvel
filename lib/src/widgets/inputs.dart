@@ -5,6 +5,10 @@ class Input extends StatelessWidget {
   final String placeholder;
   final TextInputType keyboardType;
   final bool obscureText;
+  final InputDecoration? className;
+  final double? height;
+  final TextStyle? inputTextStyle;
+  final Color cursorColor;
 
   const Input({
     super.key,
@@ -12,25 +16,35 @@ class Input extends StatelessWidget {
     required this.placeholder,
     required this.keyboardType,
     this.obscureText = false,
+    this.className,
+    this.height,
+    this.inputTextStyle,
+    this.cursorColor = Colors.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: height ?? 50,
       child: TextField(
         controller: controller,
         keyboardType: keyboardType,
         obscureText: obscureText,
-        cursorColor: Colors.black,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          hintText: placeholder,
-          hintStyle: const TextStyle(color: Colors.grey),
-          border: InputBorder.none,
-        ),
+        cursorColor: cursorColor,
+        style: inputTextStyle,
+        decoration: className?.copyWith(
+              filled: true,
+              hintText: placeholder,
+              border: InputBorder.none,
+            ) ??
+            InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              hintText: placeholder,
+              hintStyle: const TextStyle(color: Colors.grey),
+              border: InputBorder.none,
+            ),
       ),
     );
   }

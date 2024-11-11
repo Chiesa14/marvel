@@ -1,49 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marvel/src/screens/Profile/controllers.dart';
-import 'package:marvel/src/screens/Profile/profile_page_3.dart';
-import 'package:marvel/src/widgets/inputs.dart';
+import 'package:flutter_svg/svg.dart';
+
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
+import '../../widgets/inputs.dart';
+import 'controllers.dart';
 
-class ProfilePage2 extends StatefulWidget {
-  const ProfilePage2({super.key});
+class ProfilePage3 extends StatefulWidget {
+  const ProfilePage3({super.key});
 
   @override
-  State<ProfilePage2> createState() => _ProfilePage2State();
+  State<ProfilePage3> createState() => _ProfilePage3State();
 }
 
-class _ProfilePage2State extends State<ProfilePage2> {
+class _ProfilePage3State extends State<ProfilePage3> {
   final TextEditingController _userNameController = TextEditingController();
-  bool isAvailable = true;
-
-  void handleContinue(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ProfilePage3()),
-    );
-  }
+  bool isPasswordValid = false;
 
   @override
   void initState() {
     super.initState();
-    _userNameController.addListener(_checkUsernameAvailability);
+    _userNameController.addListener(_checkPasswordStrength);
   }
 
   @override
   void dispose() {
-    _userNameController.removeListener(_checkUsernameAvailability);
+    _userNameController.removeListener(_checkPasswordStrength);
     _userNameController.dispose();
     super.dispose();
   }
 
-  void _checkUsernameAvailability() {
-    final typedUsername = _userNameController.text;
+  void _checkPasswordStrength() {
+    final password = _userNameController.text;
+    final passwordRegex = RegExp(r'^(?=.*[.,_\-/&])[A-Za-z0-9.,_\-/&]{8,}$');
+
     setState(() {
-      isAvailable = !usedUsers.any(
-        (used) => used.toLowerCase() == typedUsername.toLowerCase(),
-      );
+      isPasswordValid = passwordRegex.hasMatch(password);
     });
   }
 
@@ -71,7 +63,7 @@ class _ProfilePage2State extends State<ProfilePage2> {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Enter your Username',
+                    "Choose a Password",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
@@ -105,9 +97,10 @@ class _ProfilePage2State extends State<ProfilePage2> {
                           const SizedBox(height: 20),
                           Input(
                             controller: _userNameController,
-                            placeholder: 'Username',
-                            keyboardType: TextInputType.name,
+                            placeholder: 'Create a password',
+                            keyboardType: TextInputType.text,
                             cursorColor: Colors.white,
+                            obscureText: true,
                             inputTextStyle: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -122,35 +115,57 @@ class _ProfilePage2State extends State<ProfilePage2> {
                               ),
                             ),
                           ),
-                          if (_userNameController.text.isNotEmpty)
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                isAvailable
-                                    ? "Username is available"
-                                    : "Username is taken",
-                                style: TextStyle(
-                                  color: isAvailable
-                                      ? const Color(0xFF0E9B02)
-                                      : Colors.red,
-                                  fontWeight: FontWeight.bold,
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Minimum 8 characters",
+                                  style: TextStyle(
+                                    color: _userNameController.text.length >= 8
+                                        ? const Color(0xFF0E9B02)
+                                        : Colors.white.withOpacity(0.3),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            )
+                                Text(
+                                  "Only A-Z, a-z, 0-9",
+                                  style: TextStyle(
+                                    color: _userNameController.text.length >= 8
+                                        ? const Color(0xFF0E9B02)
+                                        : Colors.white.withOpacity(0.3),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "1 special charcter (. , _ - / &)",
+                                  style: TextStyle(
+                                    color: _userNameController.text.length >= 8
+                                        ? const Color(0xFF0E9B02)
+                                        : Colors.white.withOpacity(0.3),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Button(
-                  title: "Call me this",
-                  onPressed: _userNameController.text.isNotEmpty && isAvailable
-                      ? () => handleContinue(context)
-                      : () => {},
+                  title: "Looks Strong",
+                  onPressed:
+                      _userNameController.text.isNotEmpty && isPasswordValid
+                          ? () => {}
+                          : () => {},
                   backgroundColor:
-                      _userNameController.text.isNotEmpty && isAvailable,
+                      _userNameController.text.isNotEmpty && isPasswordValid,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
                   height: 50,
                 ),
