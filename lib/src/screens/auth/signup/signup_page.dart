@@ -36,6 +36,10 @@ class _SignUpState extends State<SignUp> {
             });
   }
 
+  void handleSigninWithGoogle(BuildContext context) async {
+    await AuthServices().signInWithGoogle(context: context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -110,11 +114,16 @@ class _SignUpState extends State<SignUp> {
                       fontSize: 20),
                 ),
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SiteButton(title: "Facebook", logoURL: AppAssets.facebook),
-                    SiteButton(title: "Google", logoURL: AppAssets.google)
+                    GestureDetector(
+                        child: const SiteButton(
+                            title: "Facebook", logoURL: AppAssets.facebook)),
+                    GestureDetector(
+                        onTap: () => handleSigninWithGoogle(context),
+                        child: const SiteButton(
+                            title: "Google", logoURL: AppAssets.google))
                   ],
                 ),
                 const SizedBox(height: 20),
