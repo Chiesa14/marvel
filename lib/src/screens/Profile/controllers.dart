@@ -42,3 +42,5 @@ const avatars = {
 };
 
 String userAvatar = "spider";
+
+const usedUsers = ["user", "admin", "USER", "ADMIN"];

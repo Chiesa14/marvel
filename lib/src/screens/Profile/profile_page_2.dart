@@ -46,23 +46,27 @@ class _ProfilePage2State extends State<ProfilePage2> {
                       fontWeight: FontWeight.w900,
                       fontSize: 30),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 40),
                 if (selectedAvatar != null && selectedAvatar["1x"] != null)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Image.asset(selectedAvatar["2x"]!),
-                      GestureDetector(
-                        child: const Text(
-                          "Change",
-                          style: TextStyle(
-                            color: Color(0xFFED1B24),
-                            fontSize: 16,
+                  SizedBox(
+                    width: 300,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Image.asset(selectedAvatar["2x"]!),
+                        GestureDetector(
+                          child: const Text(
+                            "Change",
+                            style: TextStyle(
+                              color: Color(0xFFED1B24),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   )
               ],
             ),
