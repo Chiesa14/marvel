@@ -1,12 +1,36 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
 import 'controllers.dart';
 
-class ProfileConfirm extends StatelessWidget {
+class ProfileConfirm extends StatefulWidget {
   const ProfileConfirm({super.key});
+
+  @override
+  _ProfileConfirmState createState() => _ProfileConfirmState();
+}
+
+class _ProfileConfirmState extends State<ProfileConfirm> {
+  bool isReversed = false;
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+      setState(() {
+        isReversed = !isReversed;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
 
   void handleContinue(BuildContext context) {
     Navigator.push(
@@ -20,6 +44,7 @@ class ProfileConfirm extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     var selectedAvatar = avatars[userAvatar];
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -50,7 +75,35 @@ class ProfileConfirm extends StatelessWidget {
               if (selectedAvatar != null && selectedAvatar["1x"] != null)
                 Column(
                   children: [
-                    Image.asset(selectedAvatar["3x"]!),
+                    Container(
+                      height: 300,
+                      width: 300,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          AnimatedSwitcher(
+                            duration: const Duration(seconds: 3),
+                            transitionBuilder:
+                                (Widget child, Animation<double> animation) {
+                              return FadeTransition(
+                                  opacity: animation, child: child);
+                            },
+                            child: SvgPicture.asset(
+                              isReversed
+                                  ? 'assets/icons/round_red_rev.svg'
+                                  : 'assets/icons/round_red.svg',
+                              fit: BoxFit.cover,
+                              key: ValueKey<bool>(
+                                  isReversed), // Key to detect changes
+                            ),
+                          ),
+                          Image.asset(
+                            selectedAvatar["3x"]!,
+                            fit: BoxFit.contain,
+                          ),
+                        ],
+                      ),
+                    ),
                     const SizedBox(height: 20),
                     const Text(
                       "UIUXDIVYANSHU",
@@ -66,7 +119,7 @@ class ProfileConfirm extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Button(
-                  title: "Eat Your Green Vegitables",
+                  title: "Eat Your Green Vegetables",
                   onPressed: () => handleContinue(context),
                   backgroundColor: true,
                   textStyle: const TextStyle(color: Colors.white, fontSize: 20),
