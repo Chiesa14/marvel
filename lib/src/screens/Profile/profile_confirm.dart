@@ -82,7 +82,7 @@ class _ProfileConfirmState extends State<ProfileConfirm> {
                         alignment: Alignment.center,
                         children: [
                           AnimatedSwitcher(
-                            duration: const Duration(seconds: 4),
+                            duration: const Duration(seconds: 2),
                             transitionBuilder:
                                 (Widget child, Animation<double> animation) {
                               return FadeTransition(
@@ -93,8 +93,7 @@ class _ProfileConfirmState extends State<ProfileConfirm> {
                                   ? 'assets/icons/round_red_rev.svg'
                                   : 'assets/icons/round_red.svg',
                               fit: BoxFit.cover,
-                              key: ValueKey<bool>(
-                                  isReversed), // Key to detect changes
+                              key: ValueKey<bool>(isReversed),
                             ),
                           ),
                           Image.asset(
