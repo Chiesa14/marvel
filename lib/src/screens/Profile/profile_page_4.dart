@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/screens/Profile/profile_confirm.dart';
-import 'package:marvel/src/screens/Profile/profile_page_2.dart';
 import 'package:marvel/src/widgets/otp_input.dart';
 
 import '../../utils/constants.dart';
