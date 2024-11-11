@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marvel/src/screens/auth/login/login_page.dart';
-import 'package:marvel/src/screens/plans/plans_page.dart';
 import 'package:marvel/src/services/auth_services.dart';
 import 'package:marvel/src/utils/constants.dart';
 import 'package:marvel/src/widgets/button.dart';
@@ -22,19 +21,19 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _passwordController = TextEditingController();
 
   void handleSignup(BuildContext context) async {
-    isLoading = true;
+    setState(() {
+      isLoading = true;
+    });
     await AuthServices()
         .signUp(
             email: _emailController.text,
             password: _passwordController.text,
             context: context)
-        .then((value) async {
-      isLoading = false;
-    });
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => const PlanPage1()),
-    // );
+        .then((value) => {
+              setState(() {
+                isLoading = false;
+              })
+            });
   }
 
   @override
@@ -66,7 +65,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 20),
                 Button(
-                  title: isLoading ? 'Loading...' : 'Signup',
+                  title: isLoading == true ? 'Loading...' : 'Signup',
                   onPressed: () => _emailController.text.isNotEmpty &&
                           _passwordController.text.isNotEmpty
                       ? handleSignup(context)
