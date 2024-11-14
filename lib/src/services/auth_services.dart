@@ -30,7 +30,7 @@ class AuthServices {
         msg: message,
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.SNACKBAR,
-        backgroundColor: Colors.white.withOpacity(0.2),
+        backgroundColor: Colors.grey.withOpacity(0.5),
         textColor: Colors.white,
         fontSize: 14,
       );
@@ -58,7 +58,7 @@ class AuthServices {
         msg: message,
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.SNACKBAR,
-        backgroundColor: Colors.white.withOpacity(0.2),
+        backgroundColor: Colors.grey.withOpacity(0.5),
         textColor: Colors.white,
         fontSize: 14,
       );
