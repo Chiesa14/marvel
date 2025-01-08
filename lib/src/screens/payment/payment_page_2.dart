@@ -30,11 +30,13 @@ class _PaymentPage2State extends State<PaymentPage2> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           width: screenWidth,
+          height: screenHeight,
           color: Colors.black,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
