@@ -8,4 +8,7 @@ class AppAssets {
   static const String bg4 = 'assets/images/bg_4.png';
   static const String bg5 = 'assets/images/bg_5.png';
   static const String bg6 = 'assets/images/bg_6.png';
+  static const String wakanda = 'assets/images/wakanda.png';
+  static const String wanda = 'assets/images/wanda.png';
+  static const String antman = 'assets/images/antman.png';
 }
