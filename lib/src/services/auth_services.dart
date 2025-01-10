@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:marvel/src/navigation/main_screens.dart';
 import 'package:marvel/src/screens/auth/login/login_page.dart';
 import 'package:marvel/src/screens/plans/plans_page.dart';
 
@@ -48,7 +49,7 @@ class AuthServices {
 
       await Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const PlanPage1()),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
       );
     } on FirebaseAuthException catch (e) {
       print('Error is from $e');
@@ -78,7 +79,7 @@ class AuthServices {
       await Future.delayed(const Duration(seconds: 1));
       await Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const PlanPage1()),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
       );
     } catch (e) {
       print(e.toString());

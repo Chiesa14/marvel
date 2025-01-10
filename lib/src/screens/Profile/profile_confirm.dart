@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marvel/src/screens/home/home_screen.dart';
+import 'package:marvel/src/navigation/main_screens.dart';
 import 'package:marvel/src/widgets/profile_animated_component.dart';
 import '../../utils/constants.dart';
 import '../../widgets/button.dart';
@@ -37,7 +37,7 @@ class _ProfileConfirmState extends State<ProfileConfirm> {
   void handleContinue(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
+      MaterialPageRoute(builder: (context) => const MainScreen()),
     );
   }
 
