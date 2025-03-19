@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel/src/widgets/category_button_bar.dart';
+import 'package:marvel/src/widgets/options_bar.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -11,6 +12,7 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen>
     with SingleTickerProviderStateMixin {
   bool isMoviesActive = true;
+  String activeButton = 'Oldest';
 
   late final AnimationController _controller;
   late final Animation<Offset> _offsetAnimation;
@@ -68,10 +70,33 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                     isMoviesActive = value;
                   });
                 },
-                controller: _controller, // Pass controller here
-                offsetAnimation: _offsetAnimation, // Pass animation here
+                controller: _controller,
+                offsetAnimation: _offsetAnimation,
               ),
-              // Additional content...
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  children: [
+                    CategoryButtonBar(
+                      screenSize: MediaQuery.of(context).size,
+                      activeButton: activeButton,
+                      onButtonTap: (selectedButton) {
+                        setState(() {
+                          activeButton =
+                              selectedButton; // Update state in your parent widget
+                        });
+                      },
+                      buttonLabels: const [
+                        'Newest',
+                        'Oldest',
+                        'Top',
+                        'Order',
+                      ], // Provide button texts
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

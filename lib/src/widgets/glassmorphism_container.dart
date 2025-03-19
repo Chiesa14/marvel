@@ -16,7 +16,7 @@ class GlassmorphismContainer extends StatelessWidget {
     return Container(
       height: height, // Constrain the height
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         gradient: LinearGradient(
           colors: [
             Colors.black.withOpacity(0.4),
@@ -27,7 +27,7 @@ class GlassmorphismContainer extends StatelessWidget {
         ),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: Container(
